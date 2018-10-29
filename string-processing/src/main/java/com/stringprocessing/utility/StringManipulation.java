@@ -3,22 +3,34 @@ package com.stringprocessing.utility;
 import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
+
+import com.stringprocessing.exception.WrongFormatException;
 
 @Component("stringManip")
 public class StringManipulation {
 
 	private Logger logger = LogManager.getLogger(StringManipulation.class);
 
-	public String removeDoubleLettersSet(String str) {
+	public boolean stringContainsNumber(String s) {
 
-		// Take string as input
-		// Traverse the string
-		// Count for double letters in my string
-		// If they are double remove them
+		/*
+		 * Helper method to check if a string contains numbers
+		 * 
+		 */
+
+		Pattern p = Pattern.compile("[0-9]");
+		Matcher m = p.matcher(s);
+
+		return m.find();
+	}
+
+	public String removeDoubleLettersSet(String str) {
 
 		String[] result = str.split("");
 
