@@ -20,17 +20,26 @@ public class StringManipulation {
 	public boolean isContainingNumber(String s) {
 
 		/*
-		 * Helper method to check if a string contains numbers
+		 * Helper method to check if a string contains numerical characters
 		 * 
 		 */
 
+		if (s == null || s.isEmpty()) {
+			throw new WrongFormatException("Please avoid entering empty Strings");
+		}
+
 		Pattern p = Pattern.compile("[0-9]");
+		// [0-9]
 		Matcher m = p.matcher(s);
 
 		return m.find();
 	}
 
 	public String removeDoubleLettersSet(String str) {
+
+		if (isContainingNumber(str)) {
+			throw new WrongFormatException("Please only enter a String without any numerical characters");
+		}
 
 		String[] result = str.split("");
 
@@ -49,10 +58,6 @@ public class StringManipulation {
 
 		// In case I need to use a threadsafe solution
 		Set<String> syncTreeSet = Collections.synchronizedSet(mySet);
-
-		if (length <= 1) {
-			logger.error("Your string is empty");
-		}
 
 		for (int i = 0; i < length; i++) {
 

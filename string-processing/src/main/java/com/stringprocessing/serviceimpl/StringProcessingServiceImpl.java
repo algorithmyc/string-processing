@@ -24,13 +24,7 @@ public class StringProcessingServiceImpl implements StringProcessingService {
 	}
 
 	@Override
-	public boolean isContainingNumber(String s) {
-		// TODO Auto-generated method stub
-		return stringManip.isContainingNumber(s);
-	}
-
-	@Override
-	public String getNumberToWords(int value) {
+	public String getNumberToWords(String value) {
 
 		return numberToWords.convert(value);
 

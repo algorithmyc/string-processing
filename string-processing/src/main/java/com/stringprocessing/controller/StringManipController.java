@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,15 +36,6 @@ public class StringManipController {
 	@ResponseBody
 	public ProcessedString doManip(@RequestParam(name = "value", required = false, defaultValue = "") String value) {
 
-		if (value == null || value.isEmpty()) {
-			throw new WrongFormatException(
-					"Please only enter a String with at least two double letters and no numerical value");
-		}
-
-		if (stringProcessingService.isContainingNumber(value)) {
-			throw new WrongFormatException("Please only enter a String without any numerical value");
-		}
-
 		result = stringProcessingService.getStringManipulation(value);
 
 		return new ProcessedString(result);
@@ -53,19 +45,8 @@ public class StringManipController {
 	@GetMapping("/writeNumber")
 	@ResponseBody
 	public ProcessedString getWriteNumber(
-			@RequestParam(name = "value", required = false, defaultValue = "") int value) {
-
-		if (value < 0) {
-			throw new WrongFormatException(
-					"Negative numbers not allowed, please enter a positive natural number between 0 and 999 999");
-		}
-
-		if (value > 999999) {
-
-			throw new WrongFormatException(
-					"Numbers Greater than 999 999 not allowed, please enter a positive natural number between 0 and 999 999");
-		}
-
+			@RequestParam(name = "value", required = false, defaultValue = "") String value) {
+		
 		number = stringProcessingService.getNumberToWords(value);
 
 		return new ProcessedString(number);

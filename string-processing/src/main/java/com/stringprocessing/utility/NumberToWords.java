@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import com.stringprocessing.exception.WrongFormatException;
+
 @Component("numberToWords")
 public class NumberToWords {
 
@@ -15,6 +17,12 @@ public class NumberToWords {
 
 	private static final String[] tens = { "", "", "Twenty ", "Thirty ", "Forty ", "Fifty ", "Sixty ", "Seventy ",
 			"Eighty ", "Ninety " };
+
+	public boolean isOnlyNumeric(String s) {
+		// Checks also for any negative signs
+		return (s.matches("[0-9]+") && s.length() > 2);
+
+	}
 
 	// Function to convert single digit or two digit number into words
 	private String convertToWords(int n, String s) {
@@ -32,22 +40,29 @@ public class NumberToWords {
 	}
 
 	// Function to convert a given number (max 6-digits) into words
-	public String convert(int n) {
+	public String convert(String n) {
 
-		if (n < 0) {
-			logger.error("Negative numbers not allowed");
-
+		if (!(isOnlyNumeric(n))) {
+			throw new WrongFormatException("Please enter only positive numerical characters");
 		}
-		// for storing the word representation of given number
+
+		int parsedInt = Integer.parseInt(n);
+
+		if (parsedInt > 999999) {
+
+			throw new WrongFormatException(
+					"Numbers Greater than 999 999 not allowed, please enter a positive natural number between 0 and 999 999");
+		}
+
 		StringBuilder res = new StringBuilder();
 
-		res.append(convertToWords(((n / 100000) % 100), "Hundred Thousand, "));
+		res.append(convertToWords(((parsedInt / 100000) % 100), "Hundred Thousand, "));
 
-		res.append(convertToWords(((n / 1000) % 100), "Thousand "));
+		res.append(convertToWords(((parsedInt / 1000) % 100), "Thousand "));
 
-		res.append(convertToWords(((n / 100) % 10), "Hundred "));
+		res.append(convertToWords(((parsedInt / 100) % 10), "Hundred "));
 
-		res.append(convertToWords((n % 100), ""));
+		res.append(convertToWords((parsedInt % 100), ""));
 
 		return res.toString();
 	}
