@@ -1,9 +1,13 @@
 package com.stringprocessing.utility;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 @Component("numberToWords")
 public class NumberToWords {
+
+	private Logger logger = LogManager.getLogger(NumberToWords.class);
 
 	private static final String[] units = { "", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ",
 			"Nine ", "Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ",
@@ -13,7 +17,7 @@ public class NumberToWords {
 			"Eighty ", "Ninety " };
 
 	// Function to convert single digit or two digit number into words
-	private static String convertToWords(int n, String s) {
+	private String convertToWords(int n, String s) {
 
 		if (n == 0) {
 			return "";
@@ -29,6 +33,11 @@ public class NumberToWords {
 
 	// Function to convert a given number (max 6-digits) into words
 	public String convert(int n) {
+
+		if (n < 0) {
+			logger.error("Negative numbers not allowed");
+
+		}
 		// for storing the word representation of given number
 		StringBuilder res = new StringBuilder();
 

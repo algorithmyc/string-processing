@@ -17,7 +17,7 @@ public class StringManipulation {
 
 	private Logger logger = LogManager.getLogger(StringManipulation.class);
 
-	public boolean stringContainsNumber(String s) {
+	public boolean isContainingNumber(String s) {
 
 		/*
 		 * Helper method to check if a string contains numbers

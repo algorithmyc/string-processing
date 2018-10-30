@@ -2,11 +2,15 @@ package com.stringprocessing.test.utility;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
+
 import org.junit.Test;
 
 import com.stringprocessing.utility.NumberToWords;
 
 public class NumberToWordTests {
+
+	Date timestamp;
 
 	String nw;
 
