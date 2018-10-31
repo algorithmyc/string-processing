@@ -40,22 +40,18 @@ public class StringManipulation {
 			throw new WrongFormatException("Please only enter a String without any numerical characters");
 		}
 
-		String[] result = new String[30];
-
-		result = str.split("");
+		String[] result = str.split("");
 
 		int length = result.length;
 
-		Set<String> mySet = new TreeSet<String>();
+		Set<String> mySet = new TreeSet<>();
 
 		for (int i = 0; i < length; i++) {
 
 			mySet.add(result[i]);
 		}
 
-		String joined = String.join("", mySet);
-
-		return joined;
+		return String.join("", mySet);
 
 	}
 
