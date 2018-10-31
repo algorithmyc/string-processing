@@ -13,9 +13,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex, WebRequest request) {
+	public final ResponseEntity<ErrorDetails> handleAllWrongFormatExceptions(WrongFormatException ex,
+			WebRequest request) {
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(true));
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public final ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException ex,
+			WebRequest request) {
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 
 }
