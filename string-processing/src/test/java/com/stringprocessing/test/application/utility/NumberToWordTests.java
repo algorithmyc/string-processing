@@ -20,6 +20,13 @@ public class NumberToWordTests {
 	NumberToWords numberToWords;
 
 	@Test
+	public void testForNineHundredThousandNinetyNineThousandNineHundredNinetyNineIsOk() {
+
+		assertEquals("Nine Hundred Thousand, Ninety Nine Thousand Nine Hundred Ninety Nine ",
+				numberToWords.convert("999999"));
+	}
+
+	@Test
 	public void testForZero() {
 
 		try {
@@ -28,13 +35,6 @@ public class NumberToWordTests {
 			String expectedMessage = "Please enter only positive numerical characters";
 			assertEquals("Exception message must be correct", expectedMessage, e.getMessage());
 		}
-	}
-
-	@Test
-	public void testForLargeNumber() {
-
-		assertEquals("Nine Hundred Thousand, Ninety Nine Thousand Nine Hundred Ninety Nine ",
-				numberToWords.convert("999999"));
 	}
 
 	@Test

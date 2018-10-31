@@ -1,6 +1,5 @@
 package com.stringprocessing.utility;
 
-import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
@@ -37,27 +36,21 @@ public class StringManipulation {
 
 	public String removeDoubleLettersSet(String str) {
 
+		if (str.length() > 30) {
+			throw new WrongFormatException("Your string must be maximum 30 characters long");
+		}
+
 		if (isContainingNumber(str)) {
 			throw new WrongFormatException("Please only enter a String without any numerical characters");
 		}
 
-		String[] result = str.split("");
+		String[] result = new String[30];
+
+		result = str.split("");
 
 		int length = result.length;
-		/*
-		 * TreeSet has a log(n) time complexity guarantuee for add()/remove()/contains()
-		 * methods. Sorting an ArrayList takes n*log(n) operations, but add()/get()
-		 * takes only 1 operation.
-		 */
-
-		// So if you're mainly retrieving, and don't sort often, ArrayList is the better
-		// choice. If you sort often but dont retrieve that much TreeSet would be a
-		// better choice.
 
 		Set<String> mySet = new TreeSet<String>();
-
-		// In case I need to use a threadsafe solution
-		Set<String> syncTreeSet = Collections.synchronizedSet(mySet);
 
 		for (int i = 0; i < length; i++) {
 
