@@ -7,7 +7,6 @@ import com.stringprocessing.exception.WrongFormatException;
 @Component("numberToWords")
 public class NumberToWords {
 
-
 	private static final String[] units = { "", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ",
 			"Nine ", "Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ",
 			"Eighteen ", "Nineteen " };
@@ -43,7 +42,13 @@ public class NumberToWords {
 			throw new WrongFormatException("Please enter only positive numerical characters");
 		}
 
-		int parsedInt = Integer.parseInt(n);
+		int parsedInt = 0;
+		try {
+			parsedInt = Integer.parseInt(n);
+		} catch (NumberFormatException e) {
+
+			throw new WrongFormatException("Please enter an integer not greater than " + Integer.MAX_VALUE);
+		}
 
 		if (parsedInt > 999999) {
 

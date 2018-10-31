@@ -18,7 +18,6 @@ public class StringManipController {
 	private StringProcessingService stringProcessingService;
 
 	@GetMapping("/")
-	@ExceptionHandler(ResourceNotFoundException.class)
 	@ResponseBody
 	public String home(@RequestParam(name = "value", required = false, defaultValue = "") String value) {
 
