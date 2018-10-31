@@ -1,5 +1,5 @@
 # string-processing
-Web App for providing simple REST api's for string processing
+Spring Boot Maven Web App project for providing simple REST api's for string processing
 
 Once the Spring Boot app is running you can test the 2 REST api by
 
