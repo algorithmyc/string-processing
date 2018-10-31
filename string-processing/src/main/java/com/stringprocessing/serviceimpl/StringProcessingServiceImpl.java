@@ -26,7 +26,7 @@ public class StringProcessingServiceImpl implements StringProcessingService {
 	@Override
 	public String getNumberToWords(String value) {
 
-		return numberToWords.convert(value);
+		return numberToWords.convertNumberToWord(value);
 
 	}
 

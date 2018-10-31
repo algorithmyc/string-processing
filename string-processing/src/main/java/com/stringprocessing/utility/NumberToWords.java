@@ -25,7 +25,7 @@ public class NumberToWords {
 	}
 
 	// Function to convert single digit or two digit number into words
-	private String convertToWords(int n, String s) {
+	private String matchDigitsToUnits(int n, String s) {
 
 		if (n == 0) {
 			return "";
@@ -40,7 +40,7 @@ public class NumberToWords {
 	}
 
 	// Function to convert a given number (max 6-digits) into words
-	public String convert(String n) {
+	public String convertNumberToWord(String n) {
 
 		if (!(isOnlyNumeric(n))) {
 			throw new WrongFormatException("Please enter only positive numerical characters");
@@ -56,13 +56,13 @@ public class NumberToWords {
 
 		StringBuilder res = new StringBuilder();
 
-		res.append(convertToWords(((parsedInt / 100000) % 100), "Hundred Thousand, "));
+		res.append(matchDigitsToUnits(((parsedInt / 100000) % 100), "Hundred Thousand, "));
 
-		res.append(convertToWords(((parsedInt / 1000) % 100), "Thousand "));
+		res.append(matchDigitsToUnits(((parsedInt / 1000) % 100), "Thousand "));
 
-		res.append(convertToWords(((parsedInt / 100) % 10), "Hundred "));
+		res.append(matchDigitsToUnits(((parsedInt / 100) % 10), "Hundred "));
 
-		res.append(convertToWords((parsedInt % 100), ""));
+		res.append(matchDigitsToUnits((parsedInt % 100), ""));
 
 		return res.toString();
 	}

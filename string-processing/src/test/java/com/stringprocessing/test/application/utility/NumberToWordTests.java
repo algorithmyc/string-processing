@@ -23,14 +23,14 @@ public class NumberToWordTests {
 	public void testForNineHundredThousandNinetyNineThousandNineHundredNinetyNineIsOk() {
 
 		assertEquals("Nine Hundred Thousand, Ninety Nine Thousand Nine Hundred Ninety Nine ",
-				numberToWords.convert("999999"));
+				numberToWords.convertNumberToWord("999999"));
 	}
 
 	@Test
 	public void testForZero() {
 
 		try {
-			assertEquals("Please enter only positive numerical characters", numberToWords.convert("0"));
+			assertEquals("Please enter only positive numerical characters", numberToWords.convertNumberToWord("0"));
 		} catch (Exception e) {
 			String expectedMessage = "Please enter only positive numerical characters";
 			assertEquals("Exception message must be correct", expectedMessage, e.getMessage());
@@ -41,7 +41,7 @@ public class NumberToWordTests {
 	public void testForNegativeNumber() {
 
 		try {
-			assertEquals("Please enter only positive numerical characters", numberToWords.convert("-5"));
+			assertEquals("Please enter only positive numerical characters", numberToWords.convertNumberToWord("-5"));
 		} catch (Exception e) {
 			String expectedMessage = "Please enter only positive numerical characters";
 			assertEquals("Exception message must be correct", expectedMessage, e.getMessage());
