@@ -1,7 +1,5 @@
 package com.stringprocessing.utility;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.stringprocessing.exception.WrongFormatException;
@@ -9,7 +7,6 @@ import com.stringprocessing.exception.WrongFormatException;
 @Component("numberToWords")
 public class NumberToWords {
 
-	private Logger logger = LogManager.getLogger(NumberToWords.class);
 
 	private static final String[] units = { "", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ",
 			"Nine ", "Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ",

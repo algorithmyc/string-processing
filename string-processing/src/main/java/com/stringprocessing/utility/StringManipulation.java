@@ -5,16 +5,12 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.stringprocessing.exception.WrongFormatException;
 
 @Component("stringManip")
 public class StringManipulation {
-
-	private Logger logger = LogManager.getLogger(StringManipulation.class);
 
 	private boolean isContainingNumber(String s) {
 
