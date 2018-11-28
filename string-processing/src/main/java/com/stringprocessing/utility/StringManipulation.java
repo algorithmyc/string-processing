@@ -24,7 +24,7 @@ public class StringManipulation {
 		}
 
 		Pattern p = Pattern.compile("[0-9]");
-		// [0-9]
+		
 		Matcher m = p.matcher(s);
 
 		return m.find();
