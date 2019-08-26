@@ -19,7 +19,7 @@ public class StringManipController {
 	@ResponseBody
 	public String home(@RequestParam(name = "value", required = false, defaultValue = "") String value) {
 
-		return "Welcome to the String Processing Application";
+		return "Welcome to the String Processing Application test from gitpod";
 	}
 
 	@GetMapping("/stringDedup")
